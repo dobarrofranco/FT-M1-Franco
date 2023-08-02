@@ -21,8 +21,17 @@ function counter() {
   }
   return nuevoContador;
 }
-const nuevoContador = counter()
-console.log(nuevoContador());
+
+// const nuevoContador = counter()
+// const otroContador = counter()
+// console.log(nuevoContador());
+// console.log(nuevoContador());
+// console.log(nuevoContador());
+// console.log(nuevoContador());
+// console.log(otroContador());
+// console.log(otroContador());
+// console.log(otroContador());
+// console.log(otroContador());
 
 /* Ejercicio 2
 Tu tarea aquí es lograr, mediante un closure, que cacheFunction actúe como una memoria caché para el callback 
@@ -43,8 +52,32 @@ otra vez cálculos que ya se hicieron anteriormente.
   squareCache(5)    // no volverá a invocar a square, simplemente buscará en la caché cuál es el resultado de square(5) y lo retornará (tip: si usaste un objeto, podés usar hasOwnProperty) */
 
 function cacheFunction(cb) {
-
+  let obj = {};
+  
+  return function (arg) {
+    if (arg in obj) {
+      return obj[arg];
+    } else {
+      obj[arg] = cb(arg);
+      console.log(obj);
+      return obj[arg];
+    }
+  };
 }
+
+const cb = function(x) {
+  return x * 2;
+}
+
+const laMemoriosa = cacheFunction(cb);
+var resultOne = laMemoriosa(6);
+var resultTwo = laMemoriosa(3);
+var resultTwo = laMemoriosa(4);
+var resultTwo = laMemoriosa(8);
+console.log(resultOne);
+console.log(resultTwo);
+
+
 
 //----------------------------------------
 
@@ -69,8 +102,11 @@ function getNombre() {
   Usando el método bind() guardar, en las dos variables declaradas a continuación, dos funciones que actúen como getNombre pero retornen el nombre del instructor y del alumno, respectivamente.
 */
 
-let getNombreInstructor = getNombre.bind();
-let getNombreAlumno = getNombre.bind();
+let getNombreInstructor = getNombre.bind(instructor);
+let getNombreAlumno = getNombre.bind(alumno);
+
+// console.log(getNombreInstructor());
+// console.log(getNombreAlumno());
 
 /*
   Ejercicio 4
@@ -81,9 +117,13 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
     return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let textoAsteriscos = crearCadena.bind();
-let textoGuiones = crearCadena.bind();
-let textoUnderscore = crearCadena.bind();
+let textoAsteriscos = crearCadena.bind(this , "*" , "*");
+let textoGuiones = crearCadena.bind(this , "-"  , "-");
+let textoUnderscore = crearCadena.bind(this , "_" , "_");
+
+console.log(textoAsteriscos("hola"));
+console.log(textoGuiones("hola"));
+console.log(textoUnderscore("hola"));
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------

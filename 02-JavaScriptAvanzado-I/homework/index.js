@@ -71,7 +71,7 @@ console.log(pm); // Franco
 console.log(6 / "3") // 2
 console.log("2" * "3") // 6
 console.log(4 + 5 + "px") // 9px
-console.log("$" + 4 + 5) // $45
+console.log("$" + 4 + 5) // "$4"5
 console.log("4" - 2) // 2
 console.log("4px" - 2) // NaN
 console.log(7 / 0) // Infinity
