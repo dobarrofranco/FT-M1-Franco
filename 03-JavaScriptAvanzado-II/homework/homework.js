@@ -52,17 +52,23 @@ otra vez cálculos que ya se hicieron anteriormente.
   squareCache(5)    // no volverá a invocar a square, simplemente buscará en la caché cuál es el resultado de square(5) y lo retornará (tip: si usaste un objeto, podés usar hasOwnProperty) */
 
 function cacheFunction(cb) {
-  let obj = {};
   
+  let obj = {};
+
   return function (arg) {
-    if (arg in obj) {
-      return obj[arg];
-    } else {
-      obj[arg] = cb(arg);
-      console.log(obj);
-      return obj[arg];
-    }
-  };
+    return obj.hasOwnProperty(arg) ? obj[arg] : obj[arg] = cb(arg);
+  }   // ternario
+           // tiene la propiedad?             / no la tiene
+  
+  // return function (arg) {
+  //   if (obj.hasOwnProperty(arg)) {
+  //     return obj[arg];
+  //   } else {
+  //     
+  //     // console.log(obj);
+  //     return obj[arg] = cb(arg);
+  //   }
+  // };
 }
 
 const cb = function(x) {
@@ -122,7 +128,7 @@ let textoGuiones = crearCadena.bind(this , "-"  , "-");
 let textoUnderscore = crearCadena.bind(this , "_" , "_");
 
 console.log(textoAsteriscos("hola"));
-console.log(textoGuiones("hola"));
+console.log(textoGuiones("hola"));    // Acá ejecutamos el último valor del curring
 console.log(textoUnderscore("hola"));
 
 // No modifiquen nada debajo de esta linea
