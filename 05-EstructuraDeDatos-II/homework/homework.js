@@ -37,7 +37,7 @@ LinkedList.prototype.add = function(value) {
     return value;
   }
 }
-// let miLista = new LinkedList();
+let miLista = new LinkedList();
 // console.log(miLista.add(3));
 // console.log(miLista.add(4));
 // console.log(miLista.add(5));
@@ -87,14 +87,14 @@ LinkedList.prototype.search = function(parameter) {
   return null;
 }
 
-let cb = function () {
-  return 2 * 2;
-}
+// let cb = function () {
+//   return 2 * 2;
+// }
 
-console.log(miLista.add(cb()));
-console.log(miLista);
-console.log(miLista.search(3));
-console.log(miLista.search(cb));
+// console.log(miLista.add(cb()));
+// console.log(miLista);
+// console.log(miLista.search(3));
+// console.log(miLista.search(cb));
 
 /* EJERCICIO 2
 Implementar la clase HashTable.

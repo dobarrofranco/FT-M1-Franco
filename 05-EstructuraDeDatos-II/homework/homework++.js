@@ -83,7 +83,9 @@ LinkedList.prototype.addMiddle = function() {
         this._lenght++;
         return value;
     } else {
-        if (division1 === division2)
+        if (division1 === division2) {
+            
+        }
     }
 }
 
