@@ -23,7 +23,7 @@ function nFactorial(n) {
                                 // (5) = 5 * 4! = 4 * 3! = 3 * 2! = 2 * 1!
  }
 
-console.log(nFactorial(5));
+// console.log(nFactorial(5));
 
 function nFibonacci(n) {
   if(n === 1 || n === 0) {
